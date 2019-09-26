@@ -15,12 +15,12 @@ const Page = (props: IProps) => {
 
       <ul>
         <li>
-          <Link href={'/about'}>
+          <Link scroll={false} href={'/about'}>
             <a href=''>About</a>
           </Link>
         </li>
         <li>
-          <Link href={'/test'}>
+          <Link scroll={false} href={'/test'}>
             <a href=''>Test</a>
           </Link>
         </li>
@@ -30,8 +30,13 @@ const Page = (props: IProps) => {
         return (
           <div key={i._id}>
             <h3>
-              <Link href={'/i/[singleitem]'} as={`/i/${i._id}`}>
-                <a style={{ textDecoration: 'underline', color: 'black' }} href=''>{i.name}</a>
+              <Link scroll={false} href={'/i/[singleitem]'} as={`/i/${i._id}`}>
+                <a
+                  style={{ textDecoration: 'underline', color: 'black' }}
+                  href=''
+                >
+                  {i.name}
+                </a>
               </Link>
             </h3>
             <p>Description: {i.description}</p>
