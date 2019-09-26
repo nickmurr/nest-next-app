@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "strict": true,
+    "pretty": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "outDir": ".next",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "lib": ["es2017", "dom"],
+    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types", "./typings"],
+    "allowJs": true,
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false
+  },
+  "include": ["./pages/**/*", "./src/**/*", "./ui/**/*"],
+  "exclude": ["node_modules"]
+}
