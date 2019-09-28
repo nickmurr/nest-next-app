@@ -17,12 +17,12 @@ const Page: NextPage<IProps> = (props: IProps) => {
 
       <ul>
         <li>
-          <Link scroll={false} href={'/about'}>
+          <Link scroll={false} href={'/about'} replace={true}>
             <a href=''>About</a>
           </Link>
         </li>
         <li>
-          <Link scroll={false} href={'/test'}>
+          <Link scroll={false} href={'/test'} replace={true}>
             <a href=''>Test</a>
           </Link>
         </li>
@@ -54,8 +54,8 @@ const Page: NextPage<IProps> = (props: IProps) => {
 
 Page.getInitialProps = async (context: IReduxContext): Promise<any> => {
   if (!context.reduxStore.getState().items.items) {
-    const p = await context.reduxStore.dispatch(getAllItems());
-    return await p;
+    const res = await context.reduxStore.dispatch(getAllItems());
+    return await res;
   }
   return Promise.resolve({});
 };
