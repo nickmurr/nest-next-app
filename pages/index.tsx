@@ -17,12 +17,12 @@ const Page: NextPage<IProps> = (props: IProps) => {
 
       <ul>
         <li>
-          <Link scroll={false} href={'/about'} replace={true}>
+          <Link scroll={false} href={'/about'}>
             <a href=''>About</a>
           </Link>
         </li>
         <li>
-          <Link scroll={false} href={'/test'} replace={true}>
+          <Link scroll={false} href={'/test'}>
             <a href=''>Test</a>
           </Link>
         </li>
