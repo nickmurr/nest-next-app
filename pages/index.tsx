@@ -1,14 +1,16 @@
 import React from 'react';
-import { NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import Link from 'next/link';
-import fetch from 'isomorphic-unfetch';
+import { connect } from 'react-redux';
+import { getAllItems } from '../redux/actions/items-action';
 import { Item } from '../src/items/interfaces/item';
+import { IReduxContext, IReduxStore } from '../interface';
 
-interface IProps extends NextPage {
+interface IProps {
   items: Item[];
 }
 
-const Page = (props: IProps) => {
+const Page: NextPage<IProps> = (props: IProps) => {
   return (
     <div>
       <h1>Hello nest next!</h1>
@@ -48,13 +50,18 @@ const Page = (props: IProps) => {
   );
 };
 
-Page.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/items');
-  const data = await res.json();
 
-  return {
-    items: data,
-  };
+
+Page.getInitialProps = async (context: IReduxContext): Promise<any> => {
+  if (!context.reduxStore.getState().items.items) {
+    const p = await context.reduxStore.dispatch(getAllItems());
+    return await p;
+  }
+  return Promise.resolve({});
 };
 
-export default Page;
+const mapStateToProps = (state: any) => ({
+  items: state.items.items,
+});
+
+export default connect(mapStateToProps)(Page);

@@ -2,6 +2,7 @@ import React from 'react';
 import { NextPage } from 'next';
 import { Item } from '../../src/items/interfaces/item';
 import Link from 'next/link';
+import fetch from 'isomorphic-unfetch'
 
 interface IProps {
   item: Item;

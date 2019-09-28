@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import withReduxStore from '../redux/hoc/index';
 
 interface IProps {
-  reduxStore: any
+  reduxStore: any;
 }
 
 class MyApp extends App<IProps> {
