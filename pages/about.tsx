@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -119,6 +120,10 @@ const About = () => {
         inventore sunt, modi soluta dicta alias, illum nesciunt, harum
         repudiandae?
       </h1>
+
+      <Link href={`/i/[singleitem]`} as={`/i/5d8c81b7f196b407b8526c7a`}>
+        <a href="">First</a>
+      </Link>
     </div>
   );
 };

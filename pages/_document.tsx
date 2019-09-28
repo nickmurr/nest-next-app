@@ -18,11 +18,11 @@ class MyDocument extends Document {
         <body className='body'>
           <Main />
           <NextScript />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: 'history.scrollRestoration = "manual";',
-            }}
-          />
+          {/*<script*/}
+          {/*  dangerouslySetInnerHTML={{*/}
+          {/*    __html: 'window.history.scrollRestoration = "auto";',*/}
+          {/*  }}*/}
+          {/*/>*/}
         </body>
       </Html>
     );

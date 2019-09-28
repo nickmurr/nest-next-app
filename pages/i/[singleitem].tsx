@@ -1,18 +1,21 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { Item } from '../../src/items/interfaces/item';
+import Link from 'next/link';
 
-interface IProps extends NextPage {
+interface IProps {
   item: Item;
 }
 
-// @ts-ignore
-const SingleItem: NextPage = (props: IProps) => {
+const SingleItem: NextPage<IProps> = (props) => {
   return <div>
     <h1>{props.item.name}</h1>
     <p>{props.item.description}</p>
     <p>Quantity: {props.item.qty}</p>
     <p>id: {props.item._id}</p>
+    <Link scroll={false} href={'/about'}>
+      <a href=''>About</a>
+    </Link>
   </div>;
 };
 

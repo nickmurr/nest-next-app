@@ -1,12 +1,18 @@
 import React from 'react';
 import App from 'next/app';
 import Router from 'next/router';
+import { Provider } from 'react-redux';
+import withReduxStore from '../redux/hoc/index';
 
-class MyApp extends App {
+interface IProps {
+  reduxStore: any
+}
+
+class MyApp extends App<IProps> {
   componentDidMount() {
-    window.history.scrollRestoration = 'manual';
-    const cachedScrollPositions: any[] = [];
-    let shouldScrollRestore = { x: 0, y: 0 };
+    window.history.scrollRestoration = 'auto';
+    const cachedScrollPositions: number[][] = [];
+    let shouldScrollRestore: { x: number, y: number };
 
     Router.events.on('routeChangeStart', () => {
       cachedScrollPositions.push([window.scrollX, window.scrollY]);
@@ -18,24 +24,29 @@ class MyApp extends App {
         window.scrollTo(x, y);
         shouldScrollRestore = null;
       }
+      window.history.scrollRestoration = 'auto';
     });
 
     Router.beforePopState(() => {
-      const [x, y] = cachedScrollPositions.pop();
-      shouldScrollRestore = { x, y };
-
+      if (cachedScrollPositions.length > 0) {
+        const [x, y] = cachedScrollPositions.pop();
+        shouldScrollRestore = { x, y };
+      }
+      window.history.scrollRestoration = 'manual';
       return true;
     });
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, reduxStore } = this.props;
     return (
-      <div className='auto'>
-        <Component {...pageProps} />
-      </div>
+      <Provider store={reduxStore}>
+        <div className='auto'>
+          <Component {...pageProps} />
+        </div>
+      </Provider>
     );
   }
 }
 
-export default MyApp;
+export default withReduxStore(MyApp);
