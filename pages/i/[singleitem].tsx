@@ -2,32 +2,42 @@ import React from 'react';
 import { NextPage } from 'next';
 import { Item } from '../../src/items/interfaces/item';
 import Link from 'next/link';
-import fetch from 'isomorphic-unfetch'
+import { IReduxContext } from '../../interface';
+import { getSingleItem } from '../../redux/actions/item-action';
+import { connect } from 'react-redux';
+import { useRouter } from 'next/router';
 
 interface IProps {
-  item: Item;
+  item: { [key: string]: Item };
 }
 
 const SingleItem: NextPage<IProps> = (props) => {
+  const { singleitem } = useRouter().query;
+
+  const item = props.item[`${singleitem}`];
+
   return <div>
-    <h1>{props.item.name}</h1>
-    <p>{props.item.description}</p>
-    <p>Quantity: {props.item.qty}</p>
-    <p>id: {props.item._id}</p>
+    <h1>{item.name}</h1>
+    <p>{item.description}</p>
+    <p>Quantity: {item.qty}</p>
+    <p>id: {item._id}</p>
     <Link scroll={false} href={'/about'}>
       <a href=''>About</a>
     </Link>
   </div>;
 };
 
-SingleItem.getInitialProps = async context => {
+SingleItem.getInitialProps = async (context: IReduxContext): Promise<any> => {
   const { singleitem } = context.query;
-  const res = await fetch(`http://localhost:3000/items/${singleitem}`);
-  const data = await res.json();
-
-  return {
-    item: data,
-  };
+  if (!context.reduxStore.getState().item[`${singleitem}`]) {
+    const item = await context.reduxStore.dispatch(getSingleItem(singleitem));
+    return await item;
+  }
+  return Promise.resolve({});
 };
 
-export default SingleItem;
+const mapStateToProps = (state: any) => ({
+  item: state.item,
+});
+
+export default connect(mapStateToProps)(SingleItem);

@@ -12,6 +12,7 @@ export interface IState {
   items: {
     items: IItems[],
   };
+  item: { [key: string]: IItems; };
 }
 
 export interface IItems {

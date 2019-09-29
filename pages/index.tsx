@@ -1,10 +1,11 @@
 import React from 'react';
-import { NextPage, NextPageContext } from 'next';
+import { NextPage } from 'next';
 import Link from 'next/link';
 import { connect } from 'react-redux';
 import { getAllItems } from '../redux/actions/items-action';
 import { Item } from '../src/items/interfaces/item';
-import { IReduxContext, IReduxStore } from '../interface';
+import { IReduxContext } from '../interface';
+import PaperSheet from '../components/main-paper';
 
 interface IProps {
   items: Item[];
@@ -29,28 +30,11 @@ const Page: NextPage<IProps> = (props: IProps) => {
       </ul>
 
       {props.items.map(i => {
-        return (
-          <div key={i._id}>
-            <h3>
-              <Link scroll={false} href={'/i/[singleitem]'} as={`/i/${i._id}`}>
-                <a
-                  style={{ textDecoration: 'underline', color: 'black' }}
-                  href=''
-                >
-                  {i.name}
-                </a>
-              </Link>
-            </h3>
-            <p>Description: {i.description}</p>
-            <p style={{ color: 'blue' }}>Quantity: {i.qty}</p>
-          </div>
-        );
+        return <PaperSheet key={i._id} item={i} />;
       })}
     </div>
   );
 };
-
-
 
 Page.getInitialProps = async (context: IReduxContext): Promise<any> => {
   if (!context.reduxStore.getState().items.items) {
