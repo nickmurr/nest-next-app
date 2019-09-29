@@ -1,4 +1,4 @@
-import { Controller, Get, Res, Param } from '@nestjs/common';
+import { Controller, Get, Res, Param, HttpException, HttpStatus } from '@nestjs/common';
 import { NextResponse } from 'nest-next-module';
 
 @Controller()
@@ -7,6 +7,7 @@ export class PagesController {
   about(@Res() res: NextResponse) {
     return res.nextRender('/about');
   }
+
 
   @Get('/test')
   test(@Res() res: NextResponse) {

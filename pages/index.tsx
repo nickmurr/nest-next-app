@@ -14,7 +14,7 @@ interface IProps {
 const Page: NextPage<IProps> = (props: IProps) => {
   return (
     <div>
-      <h1>Hello nest next!</h1>
+      <h1 className='header'>Hello nest next!</h1>
 
       <ul>
         <li>
@@ -30,7 +30,7 @@ const Page: NextPage<IProps> = (props: IProps) => {
       </ul>
 
       {props.items.map(i => {
-        return <PaperSheet key={i._id} item={i} />;
+        return <PaperSheet key={i._id} item={i}/>;
       })}
     </div>
   );

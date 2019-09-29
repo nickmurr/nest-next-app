@@ -7430,6 +7430,11 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-critical-css@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-critical-css/-/react-critical-css-2.1.0.tgz#b22bbb9331477619fd56556c51c9d77e4d8c8b31"
+  integrity sha1-siu7kzFHdhn9VlVsUcnXfk2MizE=
+
 react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
@@ -8549,7 +8554,7 @@ styled-jsx@3.2.1:
     stylis "3.5.4"
     stylis-rule-sheet "0.0.10"
 
-styled-jsx@3.2.2:
+styled-jsx@3.2.2, styled-jsx@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-3.2.2.tgz#03d02d26725195d17b6a979eb8d7c34761a16bf8"
   integrity sha512-Xb9TPFY2REShznvHt/fw78wk+nxejTr8poepDeS5fRvkQ7lW49CDIWWGLzzALCLcKBIRFK/1Wi4PDZNetpig4w==

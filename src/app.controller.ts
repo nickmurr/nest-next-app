@@ -1,4 +1,4 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import { Catch, Controller, Get, Res } from '@nestjs/common';
 import { NextResponse } from 'nest-next-module';
 
 @Controller()

@@ -1,6 +1,5 @@
 import React from 'react';
 import App from 'next/app';
-import Router from 'next/router';
 import { Provider } from 'react-redux';
 import withReduxStore from '../redux/hoc/index';
 import '../styles/main.scss';

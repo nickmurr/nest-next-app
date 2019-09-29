@@ -26,7 +26,7 @@ export default function PaperSheet(props: IProps) {
           <Link scroll={false} href={'/i/[singleitem]'} as={`/i/${props.item._id}`}>
             <a
               style={{ textDecoration: 'underline', color: 'black' }}
-              href=''
+              href={`/i/${props.item._id}`}
             >
               {props.item.name}
             </a>
